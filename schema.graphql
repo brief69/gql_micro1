@@ -1,0 +1,14 @@
+# The root query type where we define all the read operations.
+type Query {
+  # Fetch a user by their ID.
+  user(id: ID!): User
+}
+
+# The User type defines the fields for a user in our system.
+type User {
+  id: ID!
+  name: String!
+  email: String!
+}
+
+# Add additional types, queries, mutations, and subscriptions as needed.

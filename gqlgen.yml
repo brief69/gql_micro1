@@ -1,0 +1,47 @@
+# gqlgen.yml is the configuration file for the gqlgen library.
+# It defines how the GraphQL schema is mapped to Go code.
+
+# Define the schema configuration.
+schema:
+  - schema.graphql
+
+# Specify the path to the generated models.
+# The models are Go structs that represent the GraphQL types.
+models:
+  User:
+    model: github.com/your_module_name/model_gen.User
+
+# Configure the resolver.
+# The resolver is the layer that fetches data for the GraphQL queries.
+exec:
+  filename: resolver.go
+  package: main
+
+# Define where the generated code will be placed.
+# This includes the Go code for the GraphQL server.
+model:
+  filename: model_gen.go
+  package: main
+
+# Autobind the existing models in your code to the GraphQL types.
+# This is useful if you have pre-defined models you want to use.
+autobind:
+  - "github.com/your_module_name"
+
+# The following section is optional.
+# It specifies plugins for gqlgen, such as the resolvergen plugin.
+# This plugin generates boilerplate code for the resolvers.
+# Uncomment the following lines if you want to use it.
+# plugins:
+#   - name: resolvergen
+#     config:
+#       layout: follow-schema
+#       dirName: graph
+#       packageName: graph
+
+# This section is also optional.
+# It allows you to specify hooks for when the code generation process starts or finishes.
+# Uncomment the following lines if you want to use hooks.
+# hooks:
+#   PostGenHook: go run github.com/99designs/gqlgen
+
